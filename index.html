@@ -2,39 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Сайт для хранения текста</title>
+    <title>Вставка текста на сайте</title>
     <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-
-        textarea {
-            width: 100%;
-            height: 400px;
-            border: 1px solid #ccc;
+        #textContainer {
+            margin: 20px;
             padding: 10px;
-            font-size: 16px;
-            resize: none;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
 <body>
-    <textarea id="textArea"></textarea>
+    <h1>Вставка текста на сайте</h1>
+    <textarea id="textInput" rows="4" cols="50"></textarea>
+    <button onclick="insertText()">Вставить текст</button>
+    <div id="textContainer"></div>
 
     <script>
-        // Получаем элемент textarea
-        var textArea = document.getElementById('textArea');
+        function insertText() {
+            var textInput = document.getElementById('textInput');
+            var textContainer = document.getElementById('textContainer');
+            var text = textInput.value;
 
-        // Загружаем сохраненный текст из локального хранилища, если он есть
-        textArea.value = localStorage.getItem('savedText');
-
-        // Слушаем событие изменения текста в textarea
-        textArea.addEventListener('input', function() {
-            // Сохраняем текст в локальное хранилище
-            localStorage.setItem('savedText', textArea.value);
-        });
+            textContainer.innerHTML = text;
+        }
     </script>
 </body>
 </html>
